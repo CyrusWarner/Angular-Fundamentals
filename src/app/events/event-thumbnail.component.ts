@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'event-thumbnail',
@@ -9,11 +9,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <div>Price: \${{ event.price }}</div>
     <div>
       <span>Location: {{ event.location.address }}</span>
-      <span>&nbsp;</span>
-      <span>{{ event.location.city }}, {{ event.location.country }}</span>
+      <span class="pad-left">{{ event.location.city }}, {{ event.location.country }}</span>
       <span></span>
     </div>
   </div>`,
+  styles: [`
+  .pad-left {margin-left: 10px;}
+  .well div {color: #bbb;}`]
 })
 
 // @Input() tells us that an event will be passed to this component
@@ -22,4 +24,5 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 // this.eventClick.emit means that this data is being emitted for other components to use
 export class EventsThumbnailComponent {
   @Input() event: any;
+
 }
