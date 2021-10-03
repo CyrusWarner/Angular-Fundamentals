@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 // [event] this means the event-thumbnail takes in an event and we pass it over in quotations.
+// (eventClick) HTML property is the Output eventClick from event thumbnail component.
+// $event references the date emitted with the event
 @Component({
   selector: 'events-list',
   template: `<div>
     <h1>Upcoming Angular Events</h1>
     <hr />
-    <event-thumbnail [event]="event1"></event-thumbnail>
+    <event-thumbnail [event]="event1" (eventClick)="handleEventClicked($event)"></event-thumbnail>
   </div>`,
 })
 
@@ -23,4 +25,7 @@ export class EventsListComponent {
       country: 'England',
     },
   };
+  handleEventClicked(data:string){
+      console.log('received', data)
+  }
 }

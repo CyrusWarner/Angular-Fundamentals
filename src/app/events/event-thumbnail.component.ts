@@ -1,25 +1,30 @@
-
-import { Component, Input, InputDecorator } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'event-thumbnail',
-    template:`    
-    <div class="well hoverwell thumbnail">
+  selector: 'event-thumbnail',
+  template: ` <div class="well hoverwell thumbnail">
     <h2>{{ event.name }}</h2>
-    <div>Date: {{event.date}}</div>
-    <div>Time: {{event.time}}</div>
-    <div>Price: \${{event.price}}</div>
-      <div>
-          <span>Location: {{event.location.address}}</span>
-          <span>&nbsp;</span>
-          <span>{{event.location.city}}, {{event.location.country}}</span>
-          <span></span>
-      </div>
-    </div>`
+    <div>Date: {{ event.date }}</div>
+    <div>Time: {{ event.time }}</div>
+    <div>Price: \${{ event.price }}</div>
+    <div>
+      <span>Location: {{ event.location.address }}</span>
+      <span>&nbsp;</span>
+      <span>{{ event.location.city }}, {{ event.location.country }}</span>
+      <span></span>
+    </div>
+    <button class="btn btn-primary" (click)="handleClickMe()">Click me!</button>
+  </div>`,
 })
 
 // @Input() tells us that an event will be passed to this component
-export class EventsThumbnailComponent  {
-    @Input() event:any
-
+// @Output() Conveys that some event has occured
+// EventEmitter listens to a named event, fires a callback, then emits that event with a value
+// this.eventClick.emit means that this data is being emitted for other components to use
+export class EventsThumbnailComponent {
+  @Input() event: any;
+  @Output() eventClick = new EventEmitter();
+  handleClickMe() {
+    this.eventClick.emit('foo');
+  }
 }
