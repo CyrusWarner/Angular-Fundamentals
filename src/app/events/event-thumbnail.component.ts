@@ -13,7 +13,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <span>{{ event.location.city }}, {{ event.location.country }}</span>
       <span></span>
     </div>
-    <button class="btn btn-primary" (click)="handleClickMe()">Click me!</button>
   </div>`,
 })
 
@@ -23,8 +22,4 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 // this.eventClick.emit means that this data is being emitted for other components to use
 export class EventsThumbnailComponent {
   @Input() event: any;
-  @Output() eventClick = new EventEmitter();
-  handleClickMe() {
-    this.eventClick.emit('foo');
-  }
 }
