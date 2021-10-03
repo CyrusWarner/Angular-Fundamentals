@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-
+// [event] this means the event-thumbnail takes in an event and we pass it over in quotations.
 @Component({
   selector: 'events-list',
-  templateUrl: './events-list.component.html'
+  template: `<div>
+    <h1>Upcoming Angular Events</h1>
+    <hr />
+    <event-thumbnail [event]="event1"></event-thumbnail>
+  </div>`,
 })
+
 export class EventsListComponent {
-  event = {
+  event1 = {
     id: 1,
     name: 'Angular Connect',
     date: '9/26/2036',
