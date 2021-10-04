@@ -1,11 +1,18 @@
 import { Component, Input} from '@angular/core';
-
+// ngIf alters the dom and removes the elements based on conditional provided
+// [ngSwitch] used for when you want to display multiple elements based on a conditional
+// [ngSwitch] can work with any data type
+// *ngSwitchcase statements should all return the same data type
 @Component({
   selector: 'event-thumbnail',
   template: ` <div class="well hoverwell thumbnail">
     <h2>{{ event?.name }}</h2>
     <div>Date: {{ event?.date }}</div>
-    <div>Time: {{ event?.time }}</div>
+    <div [ngSwitch]="event?.time">Time: {{ event?.time }}
+      <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
+      <span *ngSwitchCase="'10:00 am'">(late Start)</span>
+      <span *ngSwitchDefault>(Normal Start)</span>
+    </div>
     <div>Price: \${{ event?.price }}</div>
     <div *ngIf="event?.location">
       <span>Location: {{ event?.location?.address }}</span>
