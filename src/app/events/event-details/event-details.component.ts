@@ -11,18 +11,19 @@ import { EventService } from '../shared/event.service';
         padding-right: 20px;
       }
       .event-image {
-          height: 100px;
+        height: 100px;
       }
     `,
   ],
 })
 export class EventDetailsComponent implements OnInit {
-    event:any
-    constructor(private eventService: EventService, private route: ActivatedRoute){
-
-    }
-    ngOnInit() {
-      let eventId: number = this.route.snapshot.params['id'];
-        this.event = this.eventService.getEvent(eventId);
-    }
+  event: any;
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute
+  ) {}
+  ngOnInit() {
+    let eventId: number = this.route.snapshot.params['id'];
+    this.event = this.eventService.getEvent(eventId);
+  }
 }

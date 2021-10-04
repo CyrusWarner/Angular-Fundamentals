@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
 // [class.green] if the even time is equal to 8:00 am we will add the green style to this div
 @Component({
   selector: 'event-thumbnail',
-  template: ` <div class="well hoverwell thumbnail">
+  template: ` <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
     <h2>{{ event?.name }}</h2>
     <div>Date: {{ event?.date }}</div>
     <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
