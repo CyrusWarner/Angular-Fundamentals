@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 // services
 import { EventService } from './shared/event.service';
 import { ToastrService } from '../common/toastr.service';
+import { IEvent } from './shared/index';
 // [event] this means the event-thumbnail takes in an event and we pass it over in quotations.
 // (eventClick) HTML property is the Output eventClick from event thumbnail component.
 // $event references the date emitted with the event
@@ -22,7 +23,7 @@ import { ToastrService } from '../common/toastr.service';
 })
 
 export class EventsListComponent implements OnInit {
-  events:any
+  events:IEvent[]
 
   constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute){
 

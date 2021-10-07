@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IEvent } from './shared/index';
 // ngIf alters the dom and removes the elements based on conditional provided
 // [ngSwitch] used for when you want to display multiple elements based on a conditional
 // [ngSwitch] can work with any data type
@@ -50,7 +51,7 @@ import { Component, Input } from '@angular/core';
 // EventEmitter listens to a named event, fires a callback, then emits that event with a value
 // this.eventClick.emit means that this data is being emitted for other components to use
 export class EventsThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
 
   getStartTimeStyle():any {
     if (this.event && this.event.time === '8:00 am') {
