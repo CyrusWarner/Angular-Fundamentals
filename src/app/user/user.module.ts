@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { LoginComponent } from "./login.component";
 
 // Components
 import { ProfileComponent } from "./profile.component";
@@ -15,7 +16,8 @@ import { userRoutes } from "./user.routes";
         RouterModule.forChild(userRoutes)
     ],
     declarations: [
-        ProfileComponent
+        ProfileComponent,
+        LoginComponent
     ],
     providers: [
 
