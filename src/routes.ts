@@ -8,7 +8,7 @@ import {
     EventDetailsComponent
 } from './app/events/index'
 import { Error404Component } from "./app/errors/404.component";
-
+//  {path: 'user', loadChildren: () => import('./app/user/user.module').then(m => m.UserModule)} Lazy loads this route for a user 
 export const appRoutes:Routes = [
     {path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
     {path: 'events', component: EventsListComponent, resolve: {events:EventListResolver}},
