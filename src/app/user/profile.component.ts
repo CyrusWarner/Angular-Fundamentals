@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     // firstName and lastName fields are provided with initial values of the user
      this.firstName = new FormControl(
       this.authService.currentUser.firstName,
-      Validators.required
+      [Validators.required, Validators.pattern('[a-zA-z].*')]
     );
      this.lastName = new FormControl(
       this.authService.currentUser.lastName,
