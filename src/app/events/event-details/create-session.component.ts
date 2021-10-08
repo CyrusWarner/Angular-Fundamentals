@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession } from '..';
+import { restrictedWords } from '..';
 @Component({
   templateUrl: './create-session.component.html',
   styles: [
@@ -10,7 +11,9 @@ import { ISession } from '..';
         color: #e05c65;
         padding-left: 10px;
       }
-      .error input, .error select, .error textarea {
+      .error input,
+      .error select,
+      .error textarea {
         background-color: #e3c3c5;
       }
       .error ::-webkit-input-placeholder {
@@ -40,6 +43,7 @@ export class CreateSessionComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
+      restrictedWords(['foo', 'bar']),
     ]);
 
     this.newSessionForm = new FormGroup({
