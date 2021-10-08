@@ -16,6 +16,7 @@ import {
 } from './events/index';
 //  services
 import { ToastrService } from './common/toastr.service';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { AuthService } from './user/auth.service';
 // routes
 import { appRoutes } from 'src/routes';
@@ -40,6 +41,7 @@ import { Error404Component } from './errors/404.component';
     Error404Component,
     CreateSessionComponent,
     SessionsListComponent,
+    CollapsibleWellComponent,
   ],
   providers: [
     EventService,
