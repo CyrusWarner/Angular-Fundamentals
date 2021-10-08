@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISession } from '..';
-import { restrictedWords } from '..';
+import { ISession, restrictedWords } from '..';
 @Component({
+  selector: 'create-session',
   templateUrl: './create-session.component.html',
   styles: [
     `
@@ -29,6 +29,7 @@ import { restrictedWords } from '..';
   ],
 })
 export class CreateSessionComponent implements OnInit {
+  @Output() saveNewSession = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
   presenter: FormControl;
@@ -65,5 +66,6 @@ export class CreateSessionComponent implements OnInit {
       abstract: formValues.abstract,
       voters: [],
     };
+    this.saveNewSession.emit(newSession);
   }
 }
