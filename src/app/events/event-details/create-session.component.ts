@@ -30,6 +30,7 @@ import { ISession, restrictedWords } from '..';
 })
 export class CreateSessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter();
+  @Output() exitAddMode = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
   presenter: FormControl;
@@ -67,5 +68,9 @@ export class CreateSessionComponent implements OnInit {
       voters: [],
     };
     this.saveNewSession.emit(newSession);
+  }
+
+  cancel(){
+    this.exitAddMode.emit();
   }
 }
