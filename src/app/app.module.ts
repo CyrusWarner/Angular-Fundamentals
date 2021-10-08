@@ -11,7 +11,8 @@ import {
   EventService,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionsListComponent,
 } from './events/index';
 //  services
 import { ToastrService } from './common/toastr.service';
@@ -37,7 +38,8 @@ import { Error404Component } from './errors/404.component';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionsListComponent,
   ],
   providers: [
     EventService,
