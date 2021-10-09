@@ -13,6 +13,7 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionsListComponent,
+  DurationPipe,
 } from './events/index';
 //  services
 import { ToastrService } from './common/toastr.service';
@@ -42,6 +43,7 @@ import { Error404Component } from './errors/404.component';
     CreateSessionComponent,
     SessionsListComponent,
     CollapsibleWellComponent,
+    DurationPipe,
   ],
   providers: [
     EventService,
