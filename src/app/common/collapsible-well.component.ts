@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-// Content projection selects an attribute with the [] <-- square brackets
+// multiple content projection selects an attribute with the [] <-- square brackets
 @Component({
   selector: 'collapsible-well',
   template: `
