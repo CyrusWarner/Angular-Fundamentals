@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISession, restrictedWords } from '..';
+import {ISession} from '../shared/event.model'
+import { restrictedWords } from '../shared/restricted-words.validator';
 @Component({
   selector: 'create-session',
   templateUrl: './create-session.component.html',
