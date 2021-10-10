@@ -1,6 +1,6 @@
 import { ISession } from './../shared/event.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 // services
 import { EventService } from '../shared/event.service';
 import { IEvent } from '..';
@@ -30,9 +30,15 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventService,
     private route: ActivatedRoute
   ) {}
+
+  // We reset the event property and change events in ngOnInit
   ngOnInit() {
-    let eventId: number = this.route.snapshot.params['id'];
-    this.event = this.eventService.getEvent(eventId);
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id'])
+      this.addMode = false;
+      this.filterBy = 'all'
+      this.sortBy = 'votes'
+    })
   }
 
   addSession() {
