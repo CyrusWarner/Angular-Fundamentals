@@ -21,7 +21,8 @@ import {
   Toastr,
   JQ_TOKEN,
   CollapsibleWellComponent,
-  SimpleModalComponent
+  SimpleModalComponent,
+  ModalTriggerDirective,
 } from './common/index';
 import { AuthService } from './user/auth.service';
 // routes
@@ -54,6 +55,7 @@ let jQuery = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   // we provide a token and we use a value or use a class. The token allows us to access the data
   providers: [
