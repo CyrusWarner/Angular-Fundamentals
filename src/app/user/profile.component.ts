@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { TOASTR_TOKEN, Toastr } from './../common/toastr.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 // THIS IS AN EXAMPLE FOR CREATING A REACTIVE FORM
+// Inject allows us to use a different token besides the type from the constructor parameter
 @Component({
   templateUrl: './profile.component.html',
   styles: [
@@ -23,7 +25,7 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   private firstName: FormControl;
   private lastName: FormControl
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, @Inject(TOASTR_TOKEN) private toastr:Toastr) {}
 
   ngOnInit() {
     // firstName and lastName fields are provided with initial values of the user
@@ -47,7 +49,7 @@ export class ProfileComponent implements OnInit {
         formValues.firstName,
         formValues.lastName
       );
-      this.router.navigate(['events']);
+      this.toastr.success('Profile saved')
     }
   }
 
