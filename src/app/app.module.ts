@@ -16,8 +16,13 @@ import {
   DurationPipe,
 } from './events/index';
 //  services
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import {
+  TOASTR_TOKEN,
+  Toastr,
+  JQ_TOKEN,
+  CollapsibleWellComponent,
+  SimpleModalComponent
+} from './common/index';
 import { AuthService } from './user/auth.service';
 // routes
 import { appRoutes } from 'src/routes';
@@ -26,7 +31,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './errors/404.component';
 
-let toastr:Toastr = window['toastr']
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   imports: [
@@ -47,12 +53,14 @@ let toastr:Toastr = window['toastr']
     SessionsListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
   ],
   // we provide a token and we use a value or use a class. The token allows us to access the data
   providers: [
     EventService,
-    {provide: TOASTR_TOKEN, useValue:toastr},
-    {provide: EventRouteActivator, useClass: EventRouteActivator},
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: EventRouteActivator, useClass: EventRouteActivator },
+    {provide: JQ_TOKEN, useValue: jQuery},
     EventListResolver,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
