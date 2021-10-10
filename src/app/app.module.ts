@@ -48,10 +48,11 @@ let toastr:Toastr = window['toastr']
     CollapsibleWellComponent,
     DurationPipe,
   ],
+  // we provide a token and we use a value or use a class. The token allows us to access the data
   providers: [
     EventService,
     {provide: TOASTR_TOKEN, useValue:toastr},
-    EventRouteActivator,
+    {provide: EventRouteActivator, useClass: EventRouteActivator},
     EventListResolver,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
