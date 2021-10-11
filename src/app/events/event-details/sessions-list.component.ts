@@ -1,5 +1,7 @@
+import { AuthService } from './../../user/auth.service';
 import { Component, Input, OnChanges } from '@angular/core';
-import { ISession } from '..';
+import { ISession } from '../shared/event.model'
+import { VoterService } from './voter.service';
 @Component({
   selector: 'sessions-list',
   templateUrl: './sessions-list.component.html',
@@ -9,6 +11,7 @@ export class SessionsListComponent implements OnChanges {
   @Input() filterBy: string;
   @Input() sortBy: string;
   visibleSessions: ISession[] = [];
+  constructor(private authService:AuthService, private voterService:VoterService){}
   // ngOnChanges is called everytime one of the input values gets a new value
   // Similar to component did update
   ngOnChanges(){
@@ -16,6 +19,23 @@ export class SessionsListComponent implements OnChanges {
       this.filterSessions(this.filterBy);
       this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAscending) : this.visibleSessions.sort(sortByVotesDescending)
     }
+  }
+
+  toggleVote(session: ISession){
+    if(this.userHasVoted(session)){
+      this.voterService.deleteVoter(session, this.authService.currentUser.userName)
+    } else {
+      this.voterService.addVoter(session, this.authService.currentUser.userName);
+
+    }
+    if(this.sortBy === 'votes'){
+      this.visibleSessions.sort(sortByVotesDescending);
+    }
+
+  }
+
+  userHasVoted(session: ISession){
+    return this.voterService.userHasVoted(session, this.authService.currentUser.userName);
   }
   // this.sessions.slice(0) creates a duplicate of the sessions array with all the same elements
   filterSessions(filter){

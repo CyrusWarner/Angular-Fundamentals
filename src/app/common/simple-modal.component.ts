@@ -3,7 +3,7 @@ import { JQ_TOKEN } from './jquery.service';
 @Component({
   selector: 'simple-modal',
   template: `
-    <div id="{{elementId}}" #modalContainer class="modal fade " tabindex="-1">
+    <div id="{{ elementId }}" #modalContainer class="modal fade " tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -12,7 +12,7 @@ import { JQ_TOKEN } from './jquery.service';
             </button>
             <h4 class="modal-title">{{ title }}</h4>
           </div>
-          <div class="modal-body" (click) = "closeModal()">
+          <div class="modal-body" (click)="closeModal()">
             <ng-content></ng-content>
           </div>
         </div>
@@ -31,14 +31,13 @@ import { JQ_TOKEN } from './jquery.service';
 export class SimpleModalComponent {
   @Input() title: string;
   @Input() elementId: string;
+  @Input() closeOnBodyClick: string;
   @ViewChild('modalContainer') containerEl: ElementRef;
-  constructor(@Inject(JQ_TOKEN) private $:any){
+  constructor(@Inject(JQ_TOKEN) private $: any) {}
 
-  }
-
-  closeModal(){
-    this.$(this.containerEl.nativeElement).modal('hide')
+  closeModal() {
+    if (this.closeOnBodyClick.toLocaleLowerCase() === 'true') {
+      this.$(this.containerEl.nativeElement).modal('hide');
+    }
   }
 }
-
-

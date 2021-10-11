@@ -14,6 +14,8 @@ import {
   CreateSessionComponent,
   SessionsListComponent,
   DurationPipe,
+  UpvoteComponent,
+  VoterService
 } from './events/index';
 //  services
 import {
@@ -53,9 +55,11 @@ let jQuery = window['$'];
     CreateSessionComponent,
     SessionsListComponent,
     CollapsibleWellComponent,
-    DurationPipe,
+    UpvoteComponent,
     SimpleModalComponent,
+    DurationPipe,
     ModalTriggerDirective,
+
   ],
   // we provide a token and we use a value or use a class. The token allows us to access the data
   providers: [
@@ -65,6 +69,7 @@ let jQuery = window['$'];
     {provide: JQ_TOKEN, useValue: jQuery},
     EventListResolver,
     AuthService,
+    VoterService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
   ],
   bootstrap: [EventsAppComponent],
