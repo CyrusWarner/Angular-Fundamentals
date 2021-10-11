@@ -15,7 +15,8 @@ import {
   SessionsListComponent,
   DurationPipe,
   UpvoteComponent,
-  VoterService
+  VoterService,
+  LocationValidator
 } from './events/index';
 //  services
 import {
@@ -59,6 +60,7 @@ let jQuery = window['$'];
     SimpleModalComponent,
     DurationPipe,
     ModalTriggerDirective,
+    LocationValidator,
 
   ],
   // we provide a token and we use a value or use a class. The token allows us to access the data
