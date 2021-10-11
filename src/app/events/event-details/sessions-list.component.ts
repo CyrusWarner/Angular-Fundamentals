@@ -11,7 +11,7 @@ export class SessionsListComponent implements OnChanges {
   @Input() filterBy: string;
   @Input() sortBy: string;
   visibleSessions: ISession[] = [];
-  constructor(private authService:AuthService, private voterService:VoterService){}
+  constructor(public authService:AuthService, private voterService:VoterService){}
   // ngOnChanges is called everytime one of the input values gets a new value
   // Similar to component did update
   ngOnChanges(){
