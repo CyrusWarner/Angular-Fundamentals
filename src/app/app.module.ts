@@ -12,14 +12,14 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventService,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionsListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index';
 //  services
 import {
@@ -71,8 +71,8 @@ let jQuery = window['$'];
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
-    { provide: EventRouteActivator, useClass: EventRouteActivator },
     {provide: JQ_TOKEN, useValue: jQuery},
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
