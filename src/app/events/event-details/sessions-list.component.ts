@@ -10,6 +10,7 @@ export class SessionsListComponent implements OnChanges {
   @Input() sessions: ISession[];
   @Input() filterBy: string;
   @Input() sortBy: string;
+  @Input() eventId: number
   visibleSessions: ISession[] = [];
   constructor(public authService:AuthService, private voterService:VoterService){}
   // ngOnChanges is called everytime one of the input values gets a new value
@@ -25,7 +26,7 @@ export class SessionsListComponent implements OnChanges {
     if(this.userHasVoted(session)){
       this.voterService.deleteVoter(session, this.authService.currentUser.userName)
     } else {
-      this.voterService.addVoter(session, this.authService.currentUser.userName);
+      this.voterService.addVoter(this.eventId, session, this.authService.currentUser.userName);
 
     }
     if(this.sortBy === 'votes'){
