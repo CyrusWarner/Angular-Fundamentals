@@ -44,7 +44,8 @@ export class AuthService {
           this.currentUser = <IUser>data;
         }
       })
-    );
+    )
+    .subscribe();
   }
 
   updateCurrentUser(firstName: string, lastName: string) {
