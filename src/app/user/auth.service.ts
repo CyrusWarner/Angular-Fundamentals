@@ -48,6 +48,14 @@ export class AuthService {
     .subscribe();
   }
 
+  logout(){
+    this.currentUser = undefined;
+    let options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.http.post('/api/logout', {}, options);
+  }
+
   updateCurrentUser(firstName: string, lastName: string) {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
