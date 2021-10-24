@@ -24,7 +24,7 @@ export class SessionsListComponent implements OnChanges {
 
   toggleVote(session: ISession){
     if(this.userHasVoted(session)){
-      this.voterService.deleteVoter(session, this.authService.currentUser.userName)
+      this.voterService.deleteVoter(this.eventId, session, this.authService.currentUser.userName)
     } else {
       this.voterService.addVoter(this.eventId, session, this.authService.currentUser.userName);
 
