@@ -45,10 +45,26 @@ describe('VoterService', () => {
       var session = { id: 6, voters: ['joe', 'smith'] };
       mockHttp.post.and.returnValue(of(false));
       // Act
-      voterService.addVoter(3, <ISession>session, "bob")
+      voterService.addVoter(3, <ISession>session, 'bob');
       // Assert
       expect(session.voters.length).toBe(3);
-      expect(session.voters).toContain("bob")
-    })
-  })
+      expect(session.voters).toContain('bob');
+    });
+    it('should call http.post with the right URL', () => {
+      // Arrange
+      var session = { id: 6, voters: ['joe', 'smith'] };
+      mockHttp.post.and.returnValue(of(false));
+
+      // Act
+      voterService.addVoter(3, <ISession>session, 'bob');
+
+      // Assert
+      // jasmine.any(object) checks to make sure if the third parameter is any object
+      expect(mockHttp.post).toHaveBeenCalledWith(
+        `/api/events/3/sessions/6/voters/bob`,
+        {},
+        jasmine.any(Object)
+      );
+    });
+  });
 });
