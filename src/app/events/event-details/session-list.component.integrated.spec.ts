@@ -1,9 +1,13 @@
+import { CollapsibleWellComponent } from './../../common/collapsible-well.component';
+import { UpvoteComponent } from './upvote.component';
 import { DurationPipe } from './../shared/duration.pipe';
 import { VoterService } from './voter.service';
 import { AuthService } from './../../user/auth.service';
-import { DebugElement } from '@angular/core';
+import { Component, DebugElement, Input, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SessionsListComponent } from '.';
+import { By } from '@angular/platform-browser';
+
 
 describe('SessionListComponent', () => {
   let mockAuthService;
@@ -25,6 +29,9 @@ describe('SessionListComponent', () => {
         { provide: AuthService, useValue: mockAuthService },
         { provide: VoterService, useValue: mockVoterService },
       ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     });
     // Creates the SessionListComponent
     fixture = TestBed.createComponent(SessionsListComponent);
@@ -60,7 +67,8 @@ describe('SessionListComponent', () => {
       fixture.detectChanges();
 
       // Assert
-      expect(element.querySelector('[well-title]').textContent).toContain('Session 1')
+      // expect(element.querySelector('[well-title]').textContent).toContain('Session 1');
+      expect(debugEl.query(By.css('[well-title]')).nativeElement.textContent).toContain('Session 1')
     });
   });
 });
